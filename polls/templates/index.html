@@ -1,0 +1,706 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <!-- Developed by Joao Henrique Cavalcanti -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <!--Let browser know website is optimized for mobile-->
+    <script src="https://cdn.boomcdn.com/libs/wow-js/1.3.0/wow.min.js"></script>
+
+
+    <script>
+        // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
+        // var collapsibleElem = document.querySelector('.collapsible');
+        // var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
+
+        // Or with jQuery
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+        $(document).ready(function() {
+            $(".openbtn").click(function(ev) {
+                document.getElementById("mySidenav").style.width = "300px";
+            })
+            $(".closebtn").click(function(ev) {
+                document.getElementById("mySidenav").style.width = "0";
+            })
+
+            $('.carousel').carousel({
+                pause: "false"
+            })
+
+
+            let areas = {
+                "Cível": ["blablabla", "blablabla3", "balalal9"],
+                "Tributária": ["ssssss", "blffffff", "balaladal9"],
+                "Administrativo": ["aaaaaaaa", "lll", "ssss"],
+                "Criminal": ["dsadadad", "dddddd"],
+                "Família e Sucessões": ["ksdoakosdka", "aaaaaaa"]
+            }
+
+            let changeHead = function(title, subtitle, image) {
+                $("#header").css("background", "url('static/" + image + ".jpg'");
+                $("#header").css("background-size", "100% 300px");
+                $("#header").css("background-attachment", "fixed");
+                $("#headertexto").text(title);
+                $("#headertextoSubTexto").text(subtitle);
+            }
+
+            $(".menuItem").click(function(ev) {
+                document.getElementById("mySidenav").style.width = "0";
+                let Nclass = ev.target.id;
+                $(".menuItem").removeClass("on");
+                $(".menuItem").addClass("off");
+                console.log("#" + Nclass);
+                $("#" + Nclass).removeClass("off");
+                $("#" + Nclass).addClass("on");
+                $(".headerT").addClass("animated slideInUp")
+                window.setTimeout(function() {
+                    $(".headerT").removeClass('animated ' + "slideInUp");
+                }, 2000);
+
+                $("#" + Nclass).addClass("on");
+                $(".menuItem:before").css({
+                    "left": "55%",
+                    "right": "55%"
+                })
+                $().css({
+                    "left": "0%",
+                    "right": "0%"
+                });
+
+                console.log(Nclass);
+                if (Nclass.includes("piSide")) {
+
+                    $("#lo").hide();
+                    $("#aa").hide();
+                    $("#sn").hide();
+                    $("#co").hide();
+                    $("#header").hide();
+                    $("#carouselExampleIndicators").fadeIn(3000);
+
+
+                }
+                if (Nclass.includes("coSide")) {
+                    $("#carouselExampleIndicators").hide();
+                    $("#header").hide();
+                    changeHead("Entre em contato", "Entre em contato e agende uma visita", "headCo")
+                    $("#aa").hide();
+                    $("#sn").hide();
+                    $("#lo").hide();
+                    $("#header").fadeIn(3000);
+                    $("#co").fadeIn(3000);
+
+                }
+                if (Nclass.includes("snSide")) {
+                    $("#carouselExampleIndicators").hide();
+                    $("#header").hide();
+                    changeHead("Quem somos?", "Conheça mais sobre nós", "headSn")
+                    $("#aa").hide();
+                    $("#co").hide();
+                    $("#lo").hide();
+                    $("#header").fadeIn(3000);
+                    $("#sn").fadeIn(3000);
+
+                }
+                if (Nclass.includes("aaSide")) {
+                    $("#areasToAppend").empty();
+                    $("#areasToAppend2").empty();
+                    Object.keys(areas).forEach((item, index) => {
+                        let itemReplace = item.replace(/\s+/g, "")
+                        console.log(itemReplace, "itemReplace");
+                        let string = '<div class="hover" id=' + itemReplace + ' style="display:flex;width:30%"><img width="50px" height="70px" src="static/martelo.svg" ></img> <p class="atuacaoTexto">' + item + '</p> </div>'
+                        $("#areasToAppend").append(string);
+                        if ($(window).width() > 800) {
+                            $("#" + itemReplace).hover(function() {
+
+                                    console.log("in");
+                                    console.log("." + item);
+                                    $("#sub").show();
+                                    $("." + itemReplace).css("display", "flex");
+                                    $("." + itemReplace).hide()
+                                    $("." + itemReplace).show();
+                                },
+                                function() {
+                                    console.log("out");
+                                    $("#sub").hide();
+                                    $("." + itemReplace).hide();
+                                })
+                        }
+                        $("#" + itemReplace).click(function() {
+                            if ($(window).width() <= 800) {
+                                $("#" + itemReplace + "li").slideDown();
+                            }
+
+                        })
+                        $("#" + itemReplace).after("<ul id=" + itemReplace + "li" + " style='margin-left:40px;display:none'></ul>");
+
+                        areas[item].forEach((item2, index) => {
+                            $("#" + itemReplace + "li").append("<li>" + item2 + "</li>");
+                            let string2 = '<div class=' + itemReplace + ' style="display:none;width:30%"><img width="50px" height="70px" src="static/balanca.svg" ></img> <p class="atuacaoTexto">' + item2 + '</p> </div>'
+                            $("#areasToAppend2").append(string2);
+                        })
+                    })
+
+
+
+                    $("#carouselExampleIndicators").hide();
+                    $("#header").hide();
+                    changeHead("Nossas áreas de atuação", "", "headAa")
+                    $("#sn").hide();
+                    $("#co").hide();
+                    $("#lo").hide();
+                    $("#aa").fadeIn(3000);
+                    $("#header").fadeIn(3000);
+
+
+                }
+                console.log(Nclass.includes("loSide"));
+                if (Nclass.includes("lo")) {
+                    console.log("in");
+                    $("#carouselExampleIndicators").hide();
+                    $("#header").hide();
+                    changeHead("Nosso escritório", "Estamos prontos para recebe-lo em nosso escritório, marque uma visita a qualquer momento.", "headloc")
+                    $("#aa").hide();
+                    $("#sn").hide();
+                    $("#co").hide();
+                    $("#header").fadeIn(3000);
+                    $("#lo").fadeIn(3000);
+                }
+
+
+            })
+
+        });
+    </script>
+</head>
+
+
+<body>
+    <div id="cell" style="display:none">
+        <div style="position:fixed;background-color:white;width: 60px;height: 60px;left: 10px;top: 10px;z-index: 9999999999;border-radius: 50%;">
+            <span class="openbtn" style="font-size:30px;cursor:pointer;position: absolute;left: 28%;top: 13%;">&#9776;</span>
+        </div>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn">&times;</a>
+            <div style="height:100%;" id="navCell">
+                <div style="height:100%;display:flex;flex-direction:column;align-items: center">
+                    <img height="190px" width="300px" src={% static 'logo.jpeg' %} alt="Third slide"></img>
+                    <a id="piSide" class="menuItem on nowrapclass">Página inicial</a>
+                    <a id="snSide" class="menuItem nowrapclass">Sobre Nós</a>
+                    <a id="aaSide" class="menuItem nowrapclass">Áreas de atuação</a>
+                    <a id="loSide" class="menuItem nowrapclass">Localização </a>
+                    <a id="coSide" style="margin-bottom: 30px;" class="menuItem nowrapclass">Contato</a>
+                    <div style="margin-top: auto;margin-bottom:50px;" class="container" id="gancho">
+                        <p class="text-center nowrapclass" style="font-weight: bold;margin-bottom: 0;">84 2010-6650</p>
+                        <p class="text-center nowrapclass" style="font-style: italic;margin-top:0;margin-bottom: 0;">Emergência 24h:</p>
+                        <p class="text-center nowrapclass" style="margin-bottom:30px;font-weight: bold;">84 933000407</p>
+                        <!--foote_bottom_ul_amrc ends here-->
+                        <p id="endereco" class="text-center nowrapclass">
+                            Centro Empresarial Vivaldo<br> Jácome - R. Raimundo<br> Chaves, 1969 - sala 205 -<br> Candelária, Natal - RN,<br> 59064-390
+                            <br> <br>Copyright @2020 | Torquato</p>
+
+                        <div style="display:flex;justify-content: center;">
+                            <div style="margin-left:25px;" class="socialIcon"><a href="mailto:victor@torquatoadvocacia.adv.br?subject=AGENDAMENTO DE CONSULTA"><i class="fa fa fa-envelope"></i></a></div>
+                            <div class="socialIcon"><a href="https://wa.me/5584933000407?text=Ola, gostaria de entrar em contato para solicitar um servico"><i class="fab fa-whatsapp"></i></a></div>
+                            <div id="route" class="socialIcon"><a href="https://www.google.com/maps?saddr=My+Location&daddr=torquato+advocacia" target="_blank"><i class="fa fa-map-marker"></i></a></div>
+                        </div>
+                        <!--social_footer_ul ends here-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main" style="display:grid;grid-template-columns:300px auto 0vw;grid-template-rows:0vh auto">
+        <div style="grid-row:1 2;grid-column:1 2;box-shadow: 2px 0px 20px 0px darkgray;z-index: 2" id="nav">
+            <div style="display:flex;flex-direction:column;height: 100%;align-items: center;position:fixed;width: 300px;box-shadow: 2px 0px 20px 0px darkgray;z-index: 2">
+                <img height="190px" width="300px" src={% static 'logo.jpeg' %} alt="Third slide"></img>
+                <a id="piSide" class="menuItem on">Página inicial</a>
+                <a id="snSide" class="menuItem">Sobre Nós</a>
+                <a id="aaSide" class="menuItem">Áreas de atuação</a>
+                <a id="loSide" class="menuItem">Localização </a>
+                <a id="coSide" class="menuItem">Contato</a>
+                <div style="margin-top: auto;margin-bottom:50px;" class="container" id="gancho">
+                    <p class="text-center" style="font-weight: bold;margin-bottom: 0;">84 2010-6650</p>
+                    <p class="text-center" style="font-style: italic;margin-top:0;margin-bottom: 0;">Emergência 24h:</p>
+                    <p class="text-center" style="margin-bottom:30px;font-weight: bold;">84 933000407</p>
+                    <!--foote_bottom_ul_amrc ends here-->
+                    <p id="endereco" class="text-center">
+                        Centro Empresarial Vivaldo Jácome - R. Raimundo Chaves, 1969 - sala 205 - Candelária, Natal - RN, 59064-390
+                        <br> <br>Copyright @2020 | Torquato</p>
+
+                    <div style="display:flex;justify-content: center;">
+                        <div style="margin-left:25px;" class="socialIcon"><a href="mailto:victor@torquatoadvocacia.adv.br?subject=AGENDAMENTO DE CONSULTA"><i class="fa fa fa-envelope"></i></a></div>
+                        <div class="socialIcon"><a href="https://wa.me/5584933000407?text=Ola, gostaria de entrar em contato para solicitar um servico"><i class="fab fa-whatsapp"></i></a></div>
+                        <div id="route" class="socialIcon"><a href="https://www.google.com/maps?saddr=My+Location&daddr=torquato+advocacia" target="_blank"><i class="fa fa-map-marker"></i></a></div>
+                    </div>
+                    <!--social_footer_ul ends here-->
+                </div>
+            </div>
+        </div>
+        <div style="grid-column:2 3;z-index:1" id="side">
+            <header width="100%" id="header" style="display:none">
+                <div style="background-color:black;position:absolute;top:0;left:0;bottom:0;right:0;opacity: 0.6;">
+                    <h3 class="headerT" id="headertexto" style="color:white;margin-top:100px;text-align: center;"></h3>
+                    <p class="headerT" id="headertextoSubTexto" style="text-align:center;color:white;font-size: 18px;"></p>
+                </div>
+
+                <br>
+            </header>
+            <div class="sideOpt" style="display:none;width:100%" id="lo">
+                <div id="coco2" style="width: 60%;">
+                    <br>
+                    <br>
+                    <h3>Veja no mapa onde estamos localizados:</h3>
+
+                    <iframe id="mapa" width="100%" height="600px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=torquato%20advocacia&key=AIzaSyBXuAGMA-p15PYdxlC04eByzC58vUr7tV4" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div style="display:none;" id="aa">
+                <h5 style="text-align: center;margin-top:50px">Áreas de atuação</h5>
+                <div class="sideOpt" style="margin-top:60px">
+
+                    <div id="areasToAppend" style="margin-left: 18%;display:flex;width:100%;flex-wrap: wrap;">
+
+                    </div>
+                </div>
+                <h5 id="sub" style="display:none;text-align: center;margin-top:50px">Sub-áreas</h5>
+                <div class="sideOpt" style="margin-top:60px">
+
+                    <div id="areasToAppend2" style="margin-left: 18%;display:flex;width:100%;flex-wrap: wrap;">
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="sideOpt" style="display:none" id="sn"></div>
+            <div class="sideOpt" style="display:none" id="co">
+                <form action="" id="formulario" class="formulario" method="post" style="width:100%">
+                    {%csrf_token%}
+                    <div id="coco" style="margin-top:8%;width:60%" class="container">
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Nome</span>
+                                        </div>
+                                        <input required type="text" class="form-control" name="nome" min="0" value="" step=".01">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Sobrenome</span>
+                                        </div>
+                                        <input required type="text" class="form-control" name="sobrenome" min="0" value="" step=".01">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Email</span>
+                                        </div>
+                                        <input required type="text" class="form-control" name="email" min="0" value="" step=".01">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Telefone</span>
+                                        </div>
+                                        <input required type="text" class="form-control" name="telefone" min="0" value="" step=".01">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="apower">Qual é sua dúvida?</label>
+                                    <div class="input-group mb-3">
+                                        <textarea required class="form-control rounded-0" name="menssagem" id="exampleFormControlTextarea1" rows="12" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div style="display:flex;align-items: center;justify-content:center;">
+                            <button style="width:200px;height:70px" class="btn btn-dark float-sm-left" type="submit" name="mybtn" value="cal">Enviar</button>
+                        </div>
+                        <br>
+                    </div>
+                    <div style="flex-wrap: wrap-reverse;padding-bottom:50px;display:flex;align-items: center;justify-content:center; background-color:#F0F0F0;width:100%;">
+                        <div style="width:400px;margin-right:50px;" id="gancho">
+                            <p class="text-center" style="font-weight: bold;margin-bottom: 0;">84 2010-6650</p>
+                            <p class="text-center" style="font-style: italic;margin-top:0;margin-bottom: 0;">Emergência 24h:</p>
+                            <p class="text-center" style="margin-bottom:30px;font-weight: bold;">84 933000407</p>
+                            <!--foote_bottom_ul_amrc ends here-->
+                            <p id="endereco" class="text-center">
+                                Centro Empresarial Vivaldo Jácome - R. Raimundo Chaves, 1969 - sala 205 - Candelária, Natal - RN, 59064-390
+                                <br> <br>Copyright @2020 | Torquato</p>
+
+                            <div style="display:flex;justify-content: center;">
+                                <div style="margin-left:25px;" class="socialIcon"><a href="mailto:victor@torquatoadvocacia.adv.br?subject=AGENDAMENTO DE CONSULTA"><i class="fa fa fa-envelope"></i></a></div>
+                                <div class="socialIcon"><a href="https://wa.me/5584933000407?text=Ola, gostaria de entrar em contato para solicitar um servico"><i class="fab fa-whatsapp"></i></a></div>
+                                <div id="route" class="socialIcon"><a href="https://www.google.com/maps?saddr=My+Location&daddr=torquato+advocacia" target="_blank"><i class="fa fa-map-marker"></i></a></div>
+                            </div>
+                            <!--social_footer_ul ends here-->
+                        </div>
+                        <iframe width="400px" height="250px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=torquato%20advocacia&key=AIzaSyBXuAGMA-p15PYdxlC04eByzC58vUr7tV4" allowfullscreen></iframe>
+                    </div>
+                </form>
+            </div>
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100 imgSrc" src="static/foto1.jpg" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100 imgSrc" src="static/foto2.jpg" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100 imgSrc" src="static/foto3.jpg" alt="Third slide">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+        <style>
+            #side {
+                width: 100%;
+                height: 100vh;
+            }
+            
+            .imgSrc {
+                width: 100vw;
+                height: 100vh;
+            }
+            
+            body {
+                margin: 0;
+            }
+            
+            .menuItem {
+                position: relative;
+                color: black;
+                cursor: pointer;
+                margin-top: 15px;
+                margin-left: 40px;
+                align-self: flex-start;
+                font-size: 14px;
+                font-family: 'Poppins'
+            }
+            
+            .menuItem:before {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                left: 55%;
+                right: 55%;
+                bottom: 0%;
+                background: black;
+                height: 1.8px;
+                -webkit-transition-duration: 0.2s;
+                transition-duration: 0.3s;
+            }
+            
+            .menuItem.off:before {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                left: 55%;
+                right: 55%;
+                bottom: 0%;
+                background: black;
+                height: 1.8px;
+                -webkit-transition-duration: 0.2s;
+                transition-duration: 0.3s;
+            }
+            
+            .menuItem.on:before {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                left: 0%;
+                right: 0%;
+                bottom: 0%;
+                background: black;
+                height: 1.8px;
+                -webkit-transition-duration: 0.2s;
+                transition-duration: 0.3s;
+            }
+            
+            .menuItem:hover:before,
+            .menuItem:focus:before,
+            .menuItem:active:before {
+                left: 0%;
+                right: 0%;
+            }
+            
+            .foote_bottom_ul_amrc {
+                list-style-type: none;
+                padding: 0px;
+                display: table;
+                margin-top: 10px;
+                margin-right: auto;
+                margin-bottom: 10px;
+                margin-left: auto;
+            }
+            
+            .foote_bottom_ul_amrc li {
+                display: inline;
+            }
+            
+            .foote_bottom_ul_amrc li a {
+                color: #999;
+                margin: 0 12px;
+            }
+            
+            .fab {
+                color: black;
+            }
+            
+            .fa {
+                color: black;
+            }
+            
+            .sideOpt {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            
+            header {
+                background: url('static/headloc.jpg');
+                text-align: center;
+                width: 100%;
+                height: 300px;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            h1 {
+                font-family: 'Poppins', sans-serif;
+                font-size: 80px;
+                margin-bottom: 30px;
+                color: white;
+            }
+            
+            h3,
+            h5,
+            p {
+                font-family: 'Poppins', sans-serif;
+                margin-bottom: 30px;
+            }
+            
+            h5 {
+                font-family: 'Poppins', sans-serif;
+                margin-bottom: 15px;
+            }
+            
+            #endereco {
+                font-size: 12px;
+            }
+            
+            button {
+                border: none;
+                outline: none;
+                padding: 10px 20px;
+                border-radius: 50px;
+                color: #333;
+                background: #fff;
+                margin-bottom: 50px;
+                box-shadow: 0 3px 20px 0 #0000003b;
+            }
+            
+            button:hover {
+                cursor: pointer;
+            }
+            
+            .socialIcon li {
+                padding-left: 25px;
+                padding-top: 20px;
+                float: left;
+            }
+            
+            .socialIcon i {
+                width: 20px;
+                height: 20px;
+                text-align: center;
+            }
+            
+            .socialIcon {
+                color: black;
+                margin-right: 25px;
+            }
+            
+            .socialIcon:hover,
+            .socialIcon:focus,
+            .socialIcon:active {
+                transform: scale(1.5);
+                transition: 0.5s ease;
+            }
+            
+            .socialIcon a {
+                color: black;
+                border: 1px solid black;
+                padding: 8px;
+                border-radius: 50%;
+            }
+            
+            .atuacaoTexto {
+                margin-top: 25px;
+                margin-left: 20px;
+                white-space: nowrap;
+            }
+            
+            #headertextoSubTexto {
+                font-style: italic;
+            }
+            
+            .hover:hover {
+                cursor: pointer;
+            }
+            
+            .sidenav {
+                height: 100%;
+                width: 0;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: white;
+                overflow-x: hidden;
+                transition: 0.2s ease;
+                box-shadow: 2px 0px 20px 0px darkgray;
+                z-index: 200000000000
+            }
+            
+            .sidenav .closebtn {
+                position: absolute;
+                top: 0;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+            }
+            
+            .nowrapclass {
+                white-space: nowrap;
+            }
+            
+            @media only screen and (max-width: 800px) {
+                #cell {
+                    display: initial !important;
+                }
+                #nav {
+                    display: none !important;
+                }
+                #main {
+                    grid-template-columns: 100% !important;
+                }
+                #mapa {
+                    height: 300px !important;
+                }
+                .hover {
+                    width: 100% !important;
+                }
+                .imgSrc {
+                    object-fit: cover;
+                }
+                #gancho {
+                    margin-right: 0px !important;
+                    margin-top: 15px;
+                }
+                #coco {
+                    width: 100% !important;
+                }
+                #coco2 {
+                    width: 90% !important;
+                }
+            }
+        </style>
+
+        {% if modelo %}
+        <div class="modal" id="myModal">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Mensagem enviada</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Sua mensagem foi enviada com sucesso.
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark float-sm-right" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <style type="text/css">
+            .modal-dialog {
+                position: relative;
+                top: 100px;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 999999999;
+                overflow: auto;
+                overflow-y: auto;
+            }
+        </style>
+        <script>
+            $('#myModal').modal('show');
+        </script>
+        {% endif %}
+</body>
+
+</html>
