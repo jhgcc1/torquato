@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <!-- Compiled and minified CSS -->
+    <!-- Developed by Joao Henrique Cavalcanti -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <!--Let browser know website is optimized for mobile-->
+    <script src="https://cdn.boomcdn.com/libs/wow-js/1.3.0/wow.min.js"></script>
+
+    </script>
+
+</head>
+
+<body>
+
+    <style>
+        #side {
+            width: 100%;
+            height: 100vh;
+        }
+        
+        .imgSrc {
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        body {
+            margin: 0;
+        }
+        
+        .menuItem {
+            position: relative;
+            color: black;
+            cursor: pointer;
+            margin-top: 15px;
+            margin-left: 40px;
+            align-self: flex-start;
+            font-size: 14px;
+            font-family: 'Poppins'
+        }
+        
+        .menuItem:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: 55%;
+            right: 55%;
+            bottom: 0%;
+            background: black;
+            height: 1.8px;
+            -webkit-transition-duration: 0.2s;
+            transition-duration: 0.3s;
+        }
+        
+        .menuItem.off:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: 55%;
+            right: 55%;
+            bottom: 0%;
+            background: black;
+            height: 1.8px;
+            -webkit-transition-duration: 0.2s;
+            transition-duration: 0.3s;
+        }
+        
+        .menuItem.on:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: 0%;
+            right: 0%;
+            bottom: 0%;
+            background: black;
+            height: 1.8px;
+            -webkit-transition-duration: 0.2s;
+            transition-duration: 0.3s;
+        }
+        
+        .menuItem:hover:before,
+        .menuItem:focus:before,
+        .menuItem:active:before {
+            left: 0%;
+            right: 0%;
+        }
+        
+        .foote_bottom_ul_amrc {
+            list-style-type: none;
+            padding: 0px;
+            display: table;
+            margin-top: 10px;
+            margin-right: auto;
+            margin-bottom: 10px;
+            margin-left: auto;
+        }
+        
+        .foote_bottom_ul_amrc li {
+            display: inline;
+        }
+        
+        .foote_bottom_ul_amrc li a {
+            color: #999;
+            margin: 0 12px;
+        }
+        
+        .fab {
+            color: black;
+        }
+        
+        .fa {
+            color: black;
+        }
+        
+        .sideOpt {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        header {
+            background: url('static/headloc.jpg');
+            text-align: center;
+            width: 100%;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 80px;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        h3,
+        h5,
+        p {
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 30px;
+        }
+        
+        h5 {
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 15px;
+        }
+        
+        #endereco {
+            font-size: 12px;
+        }
+        
+        button {
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: #333;
+            background: #fff;
+            margin-bottom: 50px;
+            box-shadow: 0 3px 20px 0 #0000003b;
+        }
+        
+        button:hover {
+            cursor: pointer;
+        }
+        
+        .socialIcon li {
+            padding-left: 25px;
+            padding-top: 20px;
+            float: left;
+        }
+        
+        .socialIcon i {
+            width: 20px;
+            height: 20px;
+            text-align: center;
+        }
+        
+        .socialIcon {
+            color: black;
+            margin-right: 25px;
+        }
+        
+        .socialIcon:hover,
+        .socialIcon:focus,
+        .socialIcon:active {
+            transform: scale(1.5);
+            transition: 0.5s ease;
+        }
+        
+        .socialIcon a {
+            color: black;
+            border: 1px solid black;
+            padding: 8px;
+            border-radius: 50%;
+        }
+        
+        .atuacaoTexto {
+            margin-top: 25px;
+            margin-left: 20px;
+            white-space: nowrap;
+        }
+        
+        #headertextoSubTexto {
+            font-style: italic;
+        }
+        
+        .hover:hover {
+            cursor: pointer;
+        }
+        
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: white;
+            overflow-x: hidden;
+            transition: 0.4s;
+            box-shadow: 2px 0px 20px 0px darkgray;
+            z-index: 200000000000
+        }
+        
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        
+        .nowrapclass {
+            white-space: nowrap;
+        }
+        
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+        }
+    </style>
+    </head>
+
+    <body>
+
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div style="height:100%;" id="nav">
+                <div style="height:100%;display:flex;flex-direction:column;align-items: center;box-shadow: 2px 0px 20px 0px darkgray">
+                    <img height="190px" width="300px" src='/home/joao/Desktop/Web/website/static/logo.jpeg' alt="Third slide"></img>
+                    <a id="piSide" class="menuItem on nowrapclass">Página inicial</a>
+                    <a id="snSide" class="menuItem nowrapclass">Sobre Nós</a>
+                    <a id="aaSide" class="menuItem nowrapclass">Áreas de atuação</a>
+                    <a id="loSide" class="menuItem nowrapclass">Localização </a>
+                    <a id="coSide" class="menuItem nowrapclass">Contato</a>
+                    <div style="margin-top: auto;margin-bottom:50px;" class="container" id="gancho">
+                        <p class="text-center nowrapclass" style="font-weight: bold;margin-bottom: 0;">84 2010-6650</p>
+                        <p class="text-center nowrapclass" style="font-style: italic;margin-top:0;margin-bottom: 0;">Emergência 24h:</p>
+                        <p class="text-center nowrapclass" style="margin-bottom:30px;font-weight: bold;">84 933000407</p>
+                        <!--foote_bottom_ul_amrc ends here-->
+                        <p id="endereco" class="text-center nowrapclass">
+                            Centro Empresarial Vivaldo<br> Jácome - R. Raimundo<br> Chaves, 1969 - sala 205 -<br> Candelária, Natal - RN,<br> 59064-390
+                            <br> <br>Copyright @2020 | Torquato</p>
+
+                        <div style="display:flex;justify-content: center;">
+                            <div style="margin-left:25px;" class="socialIcon"><a href="mailto:victor@torquatoadvocacia.adv.br?subject=AGENDAMENTO DE CONSULTA"><i class="fa fa fa-envelope"></i></a></div>
+                            <div class="socialIcon"><a href="https://wa.me/5584933000407?text=Ola, gostaria de entrar em contato para solicitar um servico"><i class="fab fa-whatsapp"></i></a></div>
+                            <div id="route" class="socialIcon"><a href="https://www.google.com/maps?saddr=My+Location&daddr=torquato+advocacia" target="_blank"><i class="fa fa-map-marker"></i></a></div>
+                        </div>
+                        <!--social_footer_ul ends here-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "300px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+        </script>
+
+
+
+
+
+    </body>
