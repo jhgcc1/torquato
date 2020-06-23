@@ -26,7 +26,7 @@ SECRET_KEY = '0&-aq-1kq^2a)wki5w)6k*8)0--@1$a#83(_zoix+g2kuf#yb6'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "sheltered-bastion-59974.herokuapp.com","127.0.0.1"
+    "sheltered-bastion-59974.herokuapp.com","127.0.0.1","www.torquatoadvocacia.adv.br","torquatoadvocacia.adv.br"
 ]
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
