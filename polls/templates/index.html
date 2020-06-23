@@ -201,7 +201,7 @@
                     <a id="snSide" class="menuItem nowrapclass">Sobre Nós</a>
                     <a id="aaSide" class="menuItem nowrapclass">Áreas de atuação</a>
                     <a id="loSide" class="menuItem nowrapclass">Localização </a>
-                    <a id="coSide" class="menuItem nowrapclass">Contato</a>
+                    <a id="coSide" style="margin-bottom: 30px;" class="menuItem nowrapclass">Contato</a>
                     <div style="margin-top: auto;margin-bottom:50px;" class="container" id="gancho">
                         <p class="text-center nowrapclass" style="font-weight: bold;margin-bottom: 0;">84 2010-6650</p>
                         <p class="text-center nowrapclass" style="font-style: italic;margin-top:0;margin-bottom: 0;">Emergência 24h:</p>
@@ -290,7 +290,7 @@
             <div class="sideOpt" style="display:none" id="co">
                 <form action="" id="formulario" class="formulario" method="post" style="width:100%">
                     {%csrf_token%}
-                    <div style="margin-top:8%;width:60%" class="container">
+                    <div id="coco" style="margin-top:8%;width:60%" class="container">
                         <div class="row">
 
                             <div class="col-sm-6">
@@ -651,6 +651,9 @@
                 #gancho {
                     margin-right: 0px !important;
                     margin-top: 15px;
+                }
+                #coco {
+                    width: 100%;
                 }
             }
         </style>
