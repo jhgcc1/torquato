@@ -58,6 +58,7 @@
             }
 
             $(".menuItem").click(function(ev) {
+                $("#waa").hide();
                 document.getElementById("mySidenav").style.width = "0";
                 let Nclass = ev.target.id;
                 $(".menuItem").removeClass("on");
@@ -81,7 +82,7 @@
 
                 console.log(Nclass);
                 if (Nclass.includes("piSide")) {
-
+                    $("#waa").show();
                     $("#lo").hide();
                     $("#aa").hide();
                     $("#sn").hide();
@@ -404,7 +405,7 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            <a style="z-index:9999999999999999;position: absolute;bottom: 10%;right: 5%;" href="https://wa.me/5584933000407?text=Olá, gostaria de entrar em contato para solicitar um serviço"><img width="100px" height="100px" src="static/whatsapp.png" alt="Second slide"></a>
+            <a id="waa" style="z-index:9999999999999999;position: absolute;bottom: 10%;right: 5%;" href="https://wa.me/5584933000407?text=Olá, gostaria de entrar em contato para solicitar um serviço"><img width="100px" height="100px" src="static/whatsapp.png" alt="Second slide"></a>
             <div id="bottomSq" style="margin-top:150px;flex-wrap: wrap-reverse;padding-bottom:50px;display:flex;align-items: center;justify-content:center; background-color:#F0F0F0;width:100%;">
                 <div style="width:400px;margin-right:50px;" id="gancho">
                     <p class="text-center" style="font-weight: bold;margin-bottom: 0;">84 2010-6650</p>
